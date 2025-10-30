@@ -1,0 +1,1 @@
+web: gunicorn oceanus_dashboard_2:server
