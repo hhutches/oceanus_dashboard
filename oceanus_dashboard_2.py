@@ -17,10 +17,15 @@ GRAPH_PATH = os.path.join(BASE_DIR, "MC3_graph.json")
 
 print("Loading graph from:", GRAPH_PATH)
 
+
 with open(GRAPH_PATH) as f:
     data = json.load(f)
 G = json_graph.node_link_graph(data, edges="edges")
 print(G)
+
+# ---------- App constants ----------
+TOP_ENTITIES = 40
+TOP_ALIASES  = 40
 
 def is_entity(n): return G.nodes[n].get("type") == "Entity"
 def is_event(n):  return G.nodes[n].get("type") == "Event"
