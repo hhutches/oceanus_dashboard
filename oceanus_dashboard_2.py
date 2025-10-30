@@ -6,10 +6,13 @@ import pandas as pd
 import networkx as nx
 from networkx.readwrite import json_graph
 import networkx.algorithms.community as nx_comm
-
-import dash                     # <-- add this line
+import dash
 from dash import dcc, html, dash_table
 import plotly.graph_objects as go
+
+# ---------- App constants (define BEFORE use) ----------
+TOP_ENTITIES = int(os.environ.get("TOP_ENTITIES", 40))
+TOP_ALIASES  = int(os.environ.get("TOP_ALIASES", 40))
 
 # ---------- Paths (portable for Render) ----------
 BASE_DIR = os.path.dirname(__file__)
@@ -23,9 +26,7 @@ with open(GRAPH_PATH) as f:
 G = json_graph.node_link_graph(data, edges="edges")
 print(G)
 
-# ---------- App constants ----------
-TOP_ENTITIES = 40
-TOP_ALIASES  = 40
+
 
 def is_entity(n): return G.nodes[n].get("type") == "Entity"
 def is_event(n):  return G.nodes[n].get("type") == "Event"
