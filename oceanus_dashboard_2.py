@@ -7,6 +7,10 @@ import networkx as nx
 from networkx.readwrite import json_graph
 import networkx.algorithms.community as nx_comm
 
+import dash                     # <-- add this line
+from dash import dcc, html, dash_table
+import plotly.graph_objects as go
+
 # ---------- Paths (portable for Render) ----------
 BASE_DIR = os.path.dirname(__file__)
 GRAPH_PATH = os.path.join(BASE_DIR, "MC3_graph.json")
