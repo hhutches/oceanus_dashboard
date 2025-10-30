@@ -1,21 +1,18 @@
-import os, json, re
+import os
+import json
+import re
 from collections import Counter
 import pandas as pd
 import networkx as nx
 from networkx.readwrite import json_graph
 import networkx.algorithms.community as nx_comm
 
-import dash
-from dash import dcc, html, dash_table
-from dash.dependencies import Input, Output
-import plotly.graph_objects as go
+# ---------- Paths (portable for Render) ----------
+BASE_DIR = os.path.dirname(__file__)
+GRAPH_PATH = os.path.join(BASE_DIR, "MC3_graph.json")
 
-# ====================== Paths / constants ======================
-GRAPH_PATH = "/Users/henryhutcheson/Desktop/MC3_release/MC3_graph.json"
-TOP_ENTITIES = 40
-TOP_ALIASES  = 40
+print("Loading graph from:", GRAPH_PATH)
 
-# ====================== Load graph ======================
 with open(GRAPH_PATH) as f:
     data = json.load(f)
 G = json_graph.node_link_graph(data, edges="edges")
