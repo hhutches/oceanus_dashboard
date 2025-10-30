@@ -1,13 +1,13 @@
-import os
-import json
-import re
+import os, json, re
 from collections import Counter
 import pandas as pd
 import networkx as nx
 from networkx.readwrite import json_graph
 import networkx.algorithms.community as nx_comm
+
 import dash
 from dash import dcc, html, dash_table
+from dash.dependencies import Input, Output  # <-- add this line
 import plotly.graph_objects as go
 
 # ---------- App constants (define BEFORE use) ----------
